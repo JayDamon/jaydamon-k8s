@@ -2,7 +2,7 @@
 
 kubectl apply -f namespaces.yml
 
-kubectl apply -f ../../kubernetes-secrets/jd-mm-app-secrets.yml
+kubectl apply -f ../../kubernetes-secrets/moneymaker-app-secrets.yml -n jd-mm
 
 kubectl apply -f config-map.yml
 
