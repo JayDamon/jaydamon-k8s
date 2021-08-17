@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: moneymaker-config
+  namespace: jd-mm
+data:
+  profile-active: prod
+  configuration.json: |
+    {
+      "resourceServer":"https://moneymaker.jaydamon.com/api",
+      "keycloak": {
+        "url": "https://keycloak.jaydamon.com/auth",
+        "realm": "jd-mm",
+        "clientId": "cid-client"
+      }
+    }

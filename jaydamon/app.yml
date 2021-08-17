@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: jaydamon-service
+  namespace: jaydamon
+spec:
+  selector:
+    app: jaydamon
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jaydamon
+  namespace: jaydamon
+  labels:
+    app: jaydamon
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jaydamon
+  template:
+    metadata:
+      labels:
+        app: jaydamon
+    spec:
+      containers:
+      - name: media-catalog
+        image: repo.treescale.com/jaydamon/jaydamon:latest
+        ports:
+        - containerPort: 80
+      imagePullSecrets:
+      - name: regcred

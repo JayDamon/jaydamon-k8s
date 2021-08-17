@@ -1,0 +1,27 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: jaydamon-certificate-2
+  namespace: jaydamon
+spec:
+  dnsNames:
+    - jaydamon.com
+  secretName: jaydamon-issuer-key
+  issuerRef:
+    name: factotum-issuer
+    kind: ClusterIssuer
+
+---
+
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: jaydamon-certificate
+  namespace: jaydamon
+spec:
+  dnsNames:
+    - www.jaydamon.com
+  secretName: www-jaydamon-issuer-key
+  issuerRef:
+    name: factotum-issuer
+    kind: ClusterIssuer

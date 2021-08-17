@@ -1,0 +1,417 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: cid-moneymaker-client-service
+  namespace: jd-mm
+spec:
+  selector:
+    app: moneymaker
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: moneymaker
+  namespace: jd-mm
+  labels:
+    app: moneymaker
+spec:
+  replicas: 1
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      app: moneymaker
+  template:
+    metadata:
+      labels:
+        app: moneymaker
+    spec:
+      containers:
+      - name: moneymaker 
+        image: repo.treescale.com/jaydamon/mm-cid-client:latest
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: config-volume
+          mountPath: /usr/share/nginx/html/assets/config
+      volumes:
+        - name: config-volume
+          configMap:
+            name: moneymaker-config
+      imagePullSecrets:
+      - name: regcred
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: gateway-service
+  namespace: jd-mm
+spec:
+  selector:
+    app: moneymaker-gateway
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: moneymaker-gateway
+  namespace: jd-mm
+  labels:
+    app: moneymaker-gateway
+spec:
+  replicas: 1
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      app: moneymaker-gateway
+  template:
+    metadata:
+      labels:
+        app: moneymaker-gateway
+    spec:
+      containers:
+        - name: moneymaker-gateway
+          image: repo.treescale.com/jaydamon/mm-gateway:latest
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          ports:
+          - containerPort: 8080
+          env:
+          - name: SPRING_PROFILES_ACTIVE
+            valueFrom:
+                configMapKeyRef:
+                  name: moneymaker-config
+                  key: profile-active
+      imagePullSecrets:
+      - name: regcred
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: moneymaker-admin-service
+  namespace: jd-mm
+spec:
+  selector:
+    app: moneymaker-admin
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+
+--- 
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: moneymaker-admin
+  namespace: jd-mm
+  labels:
+    app: moneymaker-admin
+spec:
+  replicas: 1
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      app: moneymaker-admin
+  template:
+    metadata:
+      labels:
+        app: moneymaker-admin
+    spec:
+      containers:
+        - name: moneymaker-admin
+          image: repo.treescale.com/jaydamon/mm-garnet-admin:latest
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          ports:
+          - containerPort: 8080
+          env:
+          - name: SPRING_PROFILES_ACTIVE
+            valueFrom:
+                configMapKeyRef:
+                  name: moneymaker-config
+                  key: profile-active
+      imagePullSecrets:
+      - name: regcred
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: moneymaker-transaction-service
+  namespace: jd-mm
+  labels:
+    discoverable: "true"
+spec:
+  selector:
+    app: moneymaker-transaction
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+
+--- 
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: moneymaker-transaction
+  namespace: jd-mm
+  labels:
+    app: moneymaker-transaction
+spec:
+  replicas: 1
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      app: moneymaker-transaction
+  template:
+    metadata:
+      labels:
+        app: moneymaker-transaction
+    spec:
+      containers:
+        - name: moneymaker-transaction
+          image: repo.treescale.com/jaydamon/mm-oaka-transaction-service:latest
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          ports:
+          - containerPort: 8080
+          env:
+          - name: SPRING_PROFILES_ACTIVE
+            valueFrom:
+                configMapKeyRef:
+                  name: moneymaker-config
+                  key: profile-active
+          - name: DB_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: moneymaker-storage-mysql-secret
+                key: username
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: moneymaker-storage-mysql-secret
+                key: password
+          - name: OAUTH2_CLIENT_SECRET
+            valueFrom:
+              secretKeyRef:
+                name: keycloak-oaka-client-secret
+                key: client-secret
+      imagePullSecrets:
+      - name: regcred
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: moneymaker-account-service
+  namespace: jd-mm
+  labels:
+    discoverable: "true"
+spec:
+  selector:
+    app: moneymaker-account
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+
+--- 
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: moneymaker-account
+  namespace: jd-mm
+  labels:
+    app: moneymaker-account
+spec:
+  replicas: 1
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      app: moneymaker-account
+  template:
+    metadata:
+      labels:
+        app: moneymaker-account
+    spec:
+      containers:
+        - name: moneymaker-account
+          image: repo.treescale.com/jaydamon/setzer-account-service:latest
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          ports:
+          - containerPort: 8080
+          env:
+          - name: SPRING_PROFILES_ACTIVE
+            valueFrom:
+                configMapKeyRef:
+                  name: moneymaker-config
+                  key: profile-active
+          - name: DB_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: moneymaker-storage-mysql-secret
+                key: username
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: moneymaker-storage-mysql-secret
+                key: password
+          - name: OAUTH2_CLIENT_SECRET
+            valueFrom:
+              secretKeyRef:
+                name: keycloak-setzer-client-secret
+                key: client-secret
+      imagePullSecrets:
+      - name: regcred
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: moneymaker-budget-service
+  namespace: jd-mm
+  labels:
+    discoverable: "true"
+spec:
+  selector:
+    app: moneymaker-budget
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+
+--- 
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: moneymaker-budget
+  namespace: jd-mm
+  labels:
+    app: moneymaker-budget
+spec:
+  replicas: 1
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      app: moneymaker-budget
+  template:
+    metadata:
+      labels:
+        app: moneymaker-budget
+    spec:
+      containers:
+        - name: moneymaker-budget
+          image: repo.treescale.com/jaydamon/mm-rin-budget-service:latest
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          ports:
+          - containerPort: 8080
+          env:
+          - name: SPRING_PROFILES_ACTIVE
+            valueFrom:
+                configMapKeyRef:
+                  name: moneymaker-config
+                  key: profile-active
+          - name: DB_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: moneymaker-storage-mysql-secret
+                key: username
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: moneymaker-storage-mysql-secret
+                key: password
+          - name: OAUTH2_CLIENT_SECRET
+            valueFrom:
+              secretKeyRef:
+                name: keycloak-rin-client-secret
+                key: client-secret
+      imagePullSecrets:
+      - name: regcred
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: moneymaker-mysql-service
+  namespace: jd-mm
+spec:
+  ports:
+  - protocol: TCP
+    port: 3306
+    targetPort: 3306
+      
+---
+
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: moneymaker-mysql-service
+  namespace: jd-mm
+subsets:
+  - addresses:
+        - ip: 172.16.0.7
+    ports:
+      - port: 3306
