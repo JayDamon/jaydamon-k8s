@@ -12,6 +12,6 @@ kubectl apply -f certificates.yml
 
 kubectl apply -f deployments.yml
 
-kubectl apply -f ingress-config.yml
+kubectl apply -f ingress.yml
 
-kubectl rollout restart deployments
+kubectl rollout restart deployments -n jd-mm
