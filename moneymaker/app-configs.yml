@@ -114,7 +114,14 @@ data:
             provider:
               keycloak:
                 issuer-uri: https://keycloak.jaydamon.com/auth/realms/jd-mm
-
+    ---
+    spring:
+      rabbitmq:
+        host: moneymaker-rabbitmq-service
+        port: 5672
+        username: ${RABBIT-USERNAME}
+        password: ${RABBIT-PASSWORD}
+        
 ---
 
 apiVersion: v1
@@ -179,6 +186,13 @@ data:
             provider:
               keycloak:
                 issuer-uri: https://keycloak.jaydamon.com/auth/realms/jd-mm
+    ---
+    spring:
+      rabbitmq:
+        host: moneymaker-rabbitmq-service
+        port: 5672
+        username: ${RABBIT-USERNAME}
+        password: ${RABBIT-PASSWORD}
 
 ---
 
@@ -241,3 +255,10 @@ data:
             provider:
               keycloak:
                 issuer-uri: https://keycloak.jaydamon.com/auth/realms/jd-mm
+    ---
+    spring:
+      rabbitmq:
+        host: moneymaker-rabbitmq-service
+        port: 5672
+        username: ${RABBIT-USERNAME}
+        password: ${RABBIT-PASSWORD}

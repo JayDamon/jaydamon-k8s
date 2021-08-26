@@ -10,3 +10,18 @@ spec:
   issuerRef:
     name: factotum-issuer
     kind: ClusterIssuer
+
+---
+
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: mm-rabbit-certificate
+  namespace: jd-mm
+spec:
+  dnsNames:
+    - rabbit.jaydamon.com
+  secretName: mm-rabbit-issuer-key
+  issuerRef:
+    name: factotum-issuer
+    kind: ClusterIssuer

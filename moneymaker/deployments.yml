@@ -234,6 +234,16 @@ spec:
               secretKeyRef:
                 name: moneymaker-storage-mysql-secret
                 key: password
+          - name: RABBIT-USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: mm-rabbitmq-secret
+                key: username
+          - name: RABBIT-PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: mm-rabbitmq-secret
+                key: password
           - name: OAUTH2_CLIENT_SECRET
             valueFrom:
               secretKeyRef:
@@ -307,6 +317,16 @@ spec:
             valueFrom:
               secretKeyRef:
                 name: moneymaker-storage-mysql-secret
+                key: password
+          - name: RABBIT-USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: mm-rabbitmq-secret
+                key: username
+          - name: RABBIT-PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: mm-rabbitmq-secret
                 key: password
           - name: OAUTH2_CLIENT_SECRET
             valueFrom:
@@ -382,6 +402,16 @@ spec:
               secretKeyRef:
                 name: moneymaker-storage-mysql-secret
                 key: password
+          - name: RABBIT-USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: mm-rabbitmq-secret
+                key: username
+          - name: RABBIT-PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: mm-rabbitmq-secret
+                key: password
           - name: OAUTH2_CLIENT_SECRET
             valueFrom:
               secretKeyRef:
@@ -415,3 +445,55 @@ subsets:
         - ip: 172.16.0.7
     ports:
       - port: 3306
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: moneymaker-rabbitmq-service
+  namespace: jd-mm
+spec:
+  ports:
+  - protocol: TCP
+    port: 5674
+    targetPort: 5674
+      
+---
+
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: moneymaker-rabbitmq-service
+  namespace: jd-mm
+subsets:
+  - addresses:
+        - ip: 172.16.0.7
+    ports:
+      - port: 5674
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: moneymaker-rabbitmq-management-service
+  namespace: jd-mm
+spec:
+  ports:
+  - protocol: TCP
+    port: 15674
+    targetPort: 15674
+      
+---
+
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: moneymaker-rabbitmq-management-service
+  namespace: jd-mm
+subsets:
+  - addresses:
+        - ip: 172.16.0.7
+    ports:
+      - port: 15674
