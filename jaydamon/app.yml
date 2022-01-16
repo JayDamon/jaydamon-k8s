@@ -11,7 +11,7 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 80
-  
+
 ---
 
 apiVersion: apps/v1
@@ -33,7 +33,7 @@ spec:
     spec:
       containers:
       - name: media-catalog
-        image: repo.treescale.com/jaydamon/jaydamon:latest
+        image: cloud.canister.io:5000/jaymond87/jaydamon:latest
         ports:
         - containerPort: 80
       imagePullSecrets:

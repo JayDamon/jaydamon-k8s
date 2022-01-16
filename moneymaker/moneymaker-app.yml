@@ -34,7 +34,7 @@ spec:
     spec:
       containers:
       - name: moneymaker 
-        image: repo.treescale.com/jaydamon/mm-cid-client:latest
+        image: cloud.canister.io:5000/jaymond87/moneymaker-client:latest
         resources:
           requests:
             memory: "64Mi"
@@ -92,7 +92,7 @@ spec:
     spec:
       containers:
         - name: moneymaker-gateway
-          image: repo.treescale.com/jaydamon/mm-gateway:latest
+          image: cloud.canister.io:5000/jaymond87/moneymaker-api-gateway:latest
           resources:
             requests:
               memory: "512Mi"
@@ -149,7 +149,7 @@ spec:
     spec:
       containers:
         - name: moneymaker-admin
-          image: repo.treescale.com/jaydamon/mm-garnet-admin:latest
+          image: cloud.canister.io:5000/jaymond87/moneymaker-admin-service:latest
           resources:
             requests:
               memory: "512Mi"
@@ -208,7 +208,7 @@ spec:
     spec:
       containers:
         - name: moneymaker-transaction
-          image: repo.treescale.com/jaydamon/mm-oaka-transaction-service:latest
+          image: cloud.canister.io:5000/jaymond87/moneymaker-transaction-service:latest
           resources:
             requests:
               memory: "512Mi"
@@ -292,7 +292,7 @@ spec:
     spec:
       containers:
         - name: moneymaker-account
-          image: repo.treescale.com/jaydamon/setzer-account-service:latest
+          image: cloud.canister.io:5000/jaymond87/moneymaker-account-service:latest
           resources:
             requests:
               memory: "512Mi"
@@ -376,7 +376,7 @@ spec:
     spec:
       containers:
         - name: moneymaker-budget
-          image: repo.treescale.com/jaydamon/mm-rin-budget-service:latest
+          image: cloud.canister.io:5000/jaymond87/moneymaker-budget-service:latest
           resources:
             requests:
               memory: "512Mi"

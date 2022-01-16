@@ -12,7 +12,7 @@ data:
             enabled: true
           loadbalancer:
             enabled: true
-        discovery: 
+        discovery:
           enabled: true
     ribbon:
       eureka:
@@ -66,7 +66,7 @@ data:
             enabled: true
           loadbalancer:
             enabled: true
-        discovery: 
+        discovery:
           enabled: true
     ribbon:
       eureka:
@@ -89,11 +89,11 @@ data:
     ---
     spring:
       r2dbc:
-        url: r2dbc:pool:mysql://moneymaker-mysql-service:3306/transaction
+        url: r2dbc:pool:mysql://moneymaker-mysql-service:3306/mm_transaction_dev
         username: ${DB_USERNAME}
         password: ${DB_PASSWORD}
       flyway:
-        url: jdbc:mysql://moneymaker-mysql-service:3306/transaction
+        url: jdbc:mysql://moneymaker-mysql-service:3306/mm_transaction_dev
         user: ${DB_USERNAME}
         password: ${DB_PASSWORD}
         baseline-on-migrate: true
@@ -103,7 +103,7 @@ data:
         oauth2:
           resourceserver:
             jwt:
-              issuer-uri: https://keycloak.jaydamon.com/auth/realms/jd-mm
+              issuer-uri: https://keycloak.factotumsoftware.com/auth/realms/jd-mm
           client:
             registration:
               oaka-transaction-service:
@@ -113,14 +113,14 @@ data:
                 authorization-grant-type: client_credentials
             provider:
               keycloak:
-                issuer-uri: https://keycloak.jaydamon.com/auth/realms/jd-mm
+                issuer-uri: https://keycloak.factotumsoftware.com/auth/realms/jd-mm
     ---
     spring:
       rabbitmq:
         host: moneymaker-rabbitmq-service
-        port: 5674
-        username: ${RABBIT-USERNAME}
-        password: ${RABBIT-PASSWORD}
+        port: 5673
+        username: ${RABBIT_USERNAME}
+        password: ${RABBIT_PASSWORD}
 
 ---
 
@@ -138,7 +138,7 @@ data:
             enabled: true
           loadbalancer:
             enabled: true
-        discovery: 
+        discovery:
           enabled: true
     ribbon:
       eureka:
@@ -161,11 +161,11 @@ data:
     ---
     spring:
       r2dbc:
-        url: r2dbc:pool:mysql://moneymaker-mysql-service:3306/account
+        url: r2dbc:pool:mysql://moneymaker-mysql-service:3306/mm_account_dev
         username: ${DB_USERNAME}
         password: ${DB_PASSWORD}
       flyway:
-        url: jdbc:mysql://moneymaker-mysql-service:3306/account
+        url: jdbc:mysql://moneymaker-mysql-service:3306/mm_account_dev
         user: ${DB_USERNAME}
         password: ${DB_PASSWORD}
         baseline-on-migrate: true
@@ -175,7 +175,7 @@ data:
         oauth2:
           resourceserver:
             jwt:
-              issuer-uri: https://keycloak.jaydamon.com/auth/realms/jd-mm
+              issuer-uri: https://keycloak.factotumsoftware.com/auth/realms/jd-mm
           client:
             registration:
               setzer-account-service:
@@ -185,14 +185,14 @@ data:
                 authorization-grant-type: client_credentials
             provider:
               keycloak:
-                issuer-uri: https://keycloak.jaydamon.com/auth/realms/jd-mm
+                issuer-uri: https://keycloak.factotumsoftware.com/auth/realms/jd-mm
     ---
     spring:
       rabbitmq:
         host: moneymaker-rabbitmq-service
-        port: 5674
-        username: ${RABBIT-USERNAME}
-        password: ${RABBIT-PASSWORD}
+        port: 5673
+        username: ${RABBIT_USERNAME}
+        password: ${RABBIT_PASSWORD}
 
 ---
 
@@ -210,7 +210,7 @@ data:
             enabled: true
           loadbalancer:
             enabled: true
-        discovery: 
+        discovery:
           enabled: true
     ribbon:
       eureka:
@@ -244,7 +244,7 @@ data:
         oauth2:
           resourceserver:
             jwt:
-              issuer-uri: https://keycloak.jaydamon.com/auth/realms/jd-mm
+              issuer-uri: https://keycloak.factotumsoftware.com/auth/realms/jd-mm
           client:
             registration:
               rin-budget-service:
@@ -254,11 +254,11 @@ data:
                 authorization-grant-type: client_credentials
             provider:
               keycloak:
-                issuer-uri: https://keycloak.jaydamon.com/auth/realms/jd-mm
+                issuer-uri: https://keycloak.factotumsoftware.com/auth/realms/jd-mm
     ---
     spring:
       rabbitmq:
         host: moneymaker-rabbitmq-service
-        port: 5674
-        username: ${RABBIT-USERNAME}
-        password: ${RABBIT-PASSWORD}
+        port: 5673
+        username: ${RABBIT_USERNAME}
+        password: ${RABBIT_PASSWORD}
