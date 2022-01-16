@@ -1,23 +1,5 @@
 #!/bin/bash
 
-kubectl apply -f namespaces.yml
-
-kubectl apply -f ../../kubernetes-secrets/moneymaker-app-secrets.yml -n jd-mm
-
-kubectl apply -f config-map.yml
-
-kubectl apply -f app-configs.yml
-
-kubectl apply -f certificates.yml
-
-kubectl apply -f deployments.yml
-
-kubectl apply -f ingress.yml
-
-kubectl rollout restart deployments -n jd-mm
-
-#!/bin/bash
-
 res="${1:-0}";
 
 echo "Launching app in env jd-mm"
