@@ -16,8 +16,6 @@ kubectl apply -f config-map.yml
 
 kubectl apply -f app-config.yml
 
-kubectl apply -f rabbit-config.yml
-
 kubectl apply -f moneymaker-app.yml -n jd-mm
 
 kubectl apply -f ingress.yml

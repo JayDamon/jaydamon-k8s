@@ -6,8 +6,6 @@ kubectl delete -f ingress.yml
 
 kubectl delete -f moneymaker-app.yml -n jd-mm
 
-kubectl delete -f rabbit-config.yml
-
 kubectl delete -f app-config.yml
 
 kubectl delete -f config-map.yml
