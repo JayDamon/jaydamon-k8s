@@ -10,7 +10,7 @@ kubectl apply -f cert.yml
 
 kubectl apply -f ../../secrets/canister-registry-secret.yml -n jd-mm
 
-kubectl apply -f ../../secrets/moneymaker-secrets-jd-mm.yml
+kubectl apply -f ../../kubernetes-secrets/moneymaker-app-secrets.yml -n jd-mm
 
 kubectl apply -f config-map.yml
 
