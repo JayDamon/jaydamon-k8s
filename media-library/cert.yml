@@ -1,0 +1,27 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: media-library-certificate
+  namespace: media-jd
+spec:
+  dnsNames:
+    - media-library.factotumsoftware.com
+  secretName: media-library-issuer-key
+  issuerRef:
+    name: factotum-issuer
+    kind: ClusterIssuer
+    
+--- 
+
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: media-library-api-certificate
+  namespace: media-jd
+spec:
+  dnsNames:
+    - media-library-api.factotumsoftware.com
+  secretName: media-library-api-issuer-key
+  issuerRef:
+    name: factotum-issuer
+    kind: ClusterIssuer

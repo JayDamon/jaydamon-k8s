@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: media-library-config
+  namespace: media-jd
+data:
+  profile-active: jaydamon
+  configuration.json: |
+    {
+      "resourceServer":"https://media-library-api.factotumsoftware.com"
+    }

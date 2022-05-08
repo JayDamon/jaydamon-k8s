@@ -1,0 +1,36 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: http-ingress
+  namespace: media-jd
+  annotations:
+    nginx.ingress.kubernetes.io/enable-cors: "true"
+spec:
+  tls:
+  - hosts:
+    - media-library.jaydamon.com
+    secretName: media-library-issuer-key
+  - hosts:
+    - media-library-api.jaydamon.com
+    secretName: media-library-api-issuer-key
+  rules:
+  - host: media-library.jaydamon.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: media-library-client-service
+            port: 
+              number: 80
+  - host: media-library-api.factotumsoftware.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: media-library-storage-service
+            port: 
+              number: 8080

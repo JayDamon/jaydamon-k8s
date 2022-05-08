@@ -1,0 +1,130 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: media-library-client-service
+spec:
+  selector:
+    app: media-library-client
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+
+--- 
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: media-library-client
+  labels:
+    app: media-library-client
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: media-library-client
+  template:
+    metadata:
+      labels:
+        app: media-library-client
+    spec:
+      containers:
+      - name: media-library-client
+        image: cloud.canister.io:5000/jaymond87/media-library-client:0.1.5
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: config-volume
+          mountPath: /usr/share/nginx/html/assets/config
+      volumes:
+        - name: config-volume
+          configMap:
+            name: media-library-config
+      imagePullSecrets:
+      - name: regcred
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: media-library-storage-service
+spec:
+  selector:
+    app: media-library-storage-service
+  type: LoadBalancer  
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: media-library-storage-service
+  labels: 
+    app: media-library-storage-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: media-library-storage-service
+  template:
+    metadata:
+      labels:
+        app: media-library-storage-service
+    spec:
+      containers:
+        - name: media-library-storage-service
+          image: cloud.canister.io:5000/jaymond87/media-library-storage-service:0.1.22
+          ports:
+          - containerPort: 8080
+          env:
+          - name: SPRING_PROFILES_ACTIVE
+            valueFrom:
+                configMapKeyRef:
+                  name: media-library-config
+                  key: profile-active
+          - name: DB_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: media-library-mysql-secret
+                key: username
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: media-library-mysql-secret
+                key: password
+      imagePullSecrets:
+      - name: regcred
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-service
+spec:
+  ports:
+  - protocol: TCP
+    port: 3306
+    targetPort: 3306
+      
+---
+
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: mysql-service
+subsets:
+  - addresses:
+        - ip: 192.168.50.168
+    ports:
+      - port: 3306
+
+
+
+    

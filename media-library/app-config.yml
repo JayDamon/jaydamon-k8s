@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: media-library-storage-service
+  namespace: media-jd
+data:
+  application.yml: |-
+      datasource:
+        url: jdbc:mysql://mysql-service:3306/media_library_app
+        username: ${DB_USERNAME}
+        password: ${DB_PASSWORD}
