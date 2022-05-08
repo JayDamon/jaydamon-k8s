@@ -24,7 +24,7 @@ spec:
             name: media-library-client-service
             port: 
               number: 80
-  - host: media-library-api.factotumsoftware.com
+  - host: media-library-api.jaydamon.com
     http:
       paths:
       - path: /

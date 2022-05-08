@@ -7,5 +7,5 @@ data:
   profile-active: jaydamon
   configuration.json: |
     {
-      "resourceServer":"https://media-library-api.factotumsoftware.com"
+      "resourceServer":"https://media-library-api.jaydamon.com"
     }

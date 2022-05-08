@@ -79,7 +79,7 @@ spec:
     spec:
       containers:
         - name: media-library-storage-service
-          image: cloud.canister.io:5000/jaymond87/media-library-storage-service:0.1.27
+          image: cloud.canister.io:5000/jaymond87/media-library-storage-service:0.1.30
           ports:
           - containerPort: 8080
           env:
