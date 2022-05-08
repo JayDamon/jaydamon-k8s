@@ -6,6 +6,6 @@ metadata:
 data:
   application.yml: |-
       datasource:
-        url: jdbc:mysql://mysql-service:3306/media_library_app
+        url: jdbc:mysql://mysql-service:3306/media_library_storage_service
         username: ${DB_USERNAME}
         password: ${DB_PASSWORD}
