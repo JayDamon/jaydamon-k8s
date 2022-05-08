@@ -31,7 +31,7 @@ kubectl apply -f app-config.yml
 
 kubectl apply -f media-catalog-app.yml -n $namespace
 
-kubectl apply -f ingress-config.yml
+kubectl apply -f ingress.yml
 
 if [ $res -eq 1 ]
 then

@@ -16,7 +16,7 @@ fi
 
 echo "Destroying app in env $namespace"
 
-kubectl delete -f ingress-config.yml
+kubectl delete -f ingress.yml
 
 kubectl delete -f media-catalog-app.yml -n $namespace
 
