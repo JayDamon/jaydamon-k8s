@@ -1,7 +1,7 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: mm-dev-certificate
+  name: mm-jd-certificate
   namespace: jd-mm
 spec:
   dnsNames:
