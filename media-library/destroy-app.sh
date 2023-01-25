@@ -1,18 +1,6 @@
 #!/bin/bash
 
-env=$1;
-
-if [[ -z "$env" ]]
-then
-    echo "env argument not provided";
-    exit 128
-elif [[ "jd" = $env ]]
-then
-    namespace="media-$env"
-else
-    echo "Invalid argument provided: $env"
-    exit 128
-fi
+namespace="media-jd"
 
 echo "Destroying app in env $namespace"
 

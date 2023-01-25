@@ -5,7 +5,7 @@ metadata:
   namespace: media-jd
 spec:
   dnsNames:
-    - media-library.factotumsoftware.com
+    - media-library.jaydamon.com
   secretName: media-library-issuer-key
   issuerRef:
     name: factotum-issuer
@@ -20,7 +20,7 @@ metadata:
   namespace: media-jd
 spec:
   dnsNames:
-    - media-library-api.factotumsoftware.com
+    - media-library-api.jaydamon.com
   secretName: media-library-api-issuer-key
   issuerRef:
     name: factotum-issuer
