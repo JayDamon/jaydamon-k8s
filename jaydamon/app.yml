@@ -33,7 +33,7 @@ spec:
     spec:
       containers:
       - name: media-catalog
-        image: cloud.canister.io:5000/jaymond87/jaydamon:latest
+        image: trance0302/jaydamon:latest
         ports:
         - containerPort: 80
       imagePullSecrets:

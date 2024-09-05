@@ -9,7 +9,7 @@ data:
     {
       "resourceServer":"https://moneymaker.jaydamon.com/api",
       "keycloak": {
-        "url": "https://keycloak.jaydamon.com/auth",
+        "url": "https://keycloak.factotumsoftware.com/auth",
         "realm": "jd-mm",
         "clientId": "cid-client"
       }
