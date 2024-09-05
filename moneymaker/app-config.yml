@@ -118,7 +118,7 @@ data:
     spring:
       rabbitmq:
         host: moneymaker-rabbitmq-service
-        port: 5673
+        port: 5674
         username: ${RABBIT_USERNAME}
         password: ${RABBIT_PASSWORD}
 
@@ -190,7 +190,7 @@ data:
     spring:
       rabbitmq:
         host: moneymaker-rabbitmq-service
-        port: 5673
+        port: 5674
         username: ${RABBIT_USERNAME}
         password: ${RABBIT_PASSWORD}
 
@@ -259,6 +259,6 @@ data:
     spring:
       rabbitmq:
         host: moneymaker-rabbitmq-service
-        port: 5673
+        port: 5674
         username: ${RABBIT_USERNAME}
         password: ${RABBIT_PASSWORD}
