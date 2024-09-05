@@ -456,8 +456,8 @@ metadata:
 spec:
   ports:
   - protocol: TCP
-    port: 5674
-    targetPort: 5674
+    port: 5673
+    targetPort: 5673
       
 ---
 
@@ -470,7 +470,7 @@ subsets:
   - addresses:
         - ip: 192.168.40.21
     ports:
-      - port: 5674
+      - port: 5673
 
 ---
 
@@ -482,8 +482,8 @@ metadata:
 spec:
   ports:
   - protocol: TCP
-    port: 15674
-    targetPort: 15674
+    port: 15673
+    targetPort: 15673
       
 ---
 
@@ -496,4 +496,4 @@ subsets:
   - addresses:
         - ip: 192.168.40.21
     ports:
-      - port: 15674
+      - port: 15673
