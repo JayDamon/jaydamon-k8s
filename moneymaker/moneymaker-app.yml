@@ -34,7 +34,7 @@ spec:
     spec:
       containers:
       - name: moneymaker 
-        image: trance0302/moneymaker-client:latest
+        image: trance0302/moneymaker-client:1.23
         resources:
           requests:
             memory: "64Mi"
@@ -92,7 +92,7 @@ spec:
     spec:
       containers:
         - name: moneymaker-gateway
-          image: trance0302/moneymaker-api-gateway:latest
+          image: trance0302/moneymaker-api-gateway:1.7
           resources:
             requests:
               memory: "512Mi"
@@ -149,7 +149,7 @@ spec:
     spec:
       containers:
         - name: moneymaker-admin
-          image: trance0302/moneymaker-admin-service:latest
+          image: trance0302/moneymaker-admin-service:1.7
           resources:
             requests:
               memory: "512Mi"
@@ -208,7 +208,7 @@ spec:
     spec:
       containers:
         - name: moneymaker-transaction
-          image: trance0302/moneymaker-transaction-service:latest
+          image: trance0302/moneymaker-transaction-service:1.13
           resources:
             requests:
               memory: "512Mi"
@@ -292,7 +292,7 @@ spec:
     spec:
       containers:
         - name: moneymaker-account
-          image: trance0302/moneymaker-account-service:latest
+          image: trance0302/moneymaker-account-service:2.5
           resources:
             requests:
               memory: "512Mi"
@@ -376,7 +376,7 @@ spec:
     spec:
       containers:
         - name: moneymaker-budget
-          image: trance0302/moneymaker-budget-service:latest
+          image: trance0302/moneymaker-budget-service:1.7
           resources:
             requests:
               memory: "512Mi"
