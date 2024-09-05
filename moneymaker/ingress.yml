@@ -41,4 +41,4 @@ spec:
           service:
             name: moneymaker-rabbitmq-management-service
             port:
-              number: 15673
+              number: 15674

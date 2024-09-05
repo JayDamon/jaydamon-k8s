@@ -234,7 +234,7 @@ spec:
               secretKeyRef:
                 name: moneymaker-storage-mysql-secret
                 key: password
-          - name: RABBIT-USERNAME
+          - name: RABBIT_USERNAME
             valueFrom:
               secretKeyRef:
                 name: mm-rabbitmq-secret
@@ -323,7 +323,7 @@ spec:
               secretKeyRef:
                 name: mm-rabbitmq-secret
                 key: username
-          - name: RABBIT-PASSWORD
+          - name: RABBIT_PASSWORD
             valueFrom:
               secretKeyRef:
                 name: mm-rabbitmq-secret
@@ -402,12 +402,12 @@ spec:
               secretKeyRef:
                 name: moneymaker-storage-mysql-secret
                 key: password
-          - name: RABBIT-USERNAME
+          - name: RABBIT_USERNAME
             valueFrom:
               secretKeyRef:
                 name: mm-rabbitmq-secret
                 key: username
-          - name: RABBIT-PASSWORD
+          - name: RABBIT_PASSWORD
             valueFrom:
               secretKeyRef:
                 name: mm-rabbitmq-secret
