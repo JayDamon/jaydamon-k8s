@@ -31,7 +31,7 @@ spec:
     spec:
       containers:
       - name: media-library-client
-        image: cloud.canister.io:5000/jaymond87/media-library-client:0.1.8
+        image: trance0302/media-library-client:0.1.8
         ports:
         - containerPort: 80
         volumeMounts:
@@ -79,7 +79,7 @@ spec:
     spec:
       containers:
         - name: media-library-storage-service
-          image: cloud.canister.io:5000/jaymond87/media-library-storage-service:0.1.30
+          image: trance0302/media-library-storage-service:0.1.30
           ports:
           - containerPort: 8080
           env:

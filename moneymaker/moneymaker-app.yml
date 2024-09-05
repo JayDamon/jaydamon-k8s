@@ -34,7 +34,7 @@ spec:
     spec:
       containers:
       - name: moneymaker 
-        image: cloud.canister.io:5000/jaymond87/moneymaker-client:latest
+        image: trance0302/moneymaker-client:latest
         resources:
           requests:
             memory: "64Mi"
@@ -92,7 +92,7 @@ spec:
     spec:
       containers:
         - name: moneymaker-gateway
-          image: cloud.canister.io:5000/jaymond87/moneymaker-api-gateway:latest
+          image: trance0302/moneymaker-api-gateway:latest
           resources:
             requests:
               memory: "512Mi"
@@ -149,7 +149,7 @@ spec:
     spec:
       containers:
         - name: moneymaker-admin
-          image: cloud.canister.io:5000/jaymond87/moneymaker-admin-service:latest
+          image: trance0302/moneymaker-admin-service:latest
           resources:
             requests:
               memory: "512Mi"
@@ -208,7 +208,7 @@ spec:
     spec:
       containers:
         - name: moneymaker-transaction
-          image: cloud.canister.io:5000/jaymond87/moneymaker-transaction-service:latest
+          image: trance0302/moneymaker-transaction-service:latest
           resources:
             requests:
               memory: "512Mi"
@@ -292,7 +292,7 @@ spec:
     spec:
       containers:
         - name: moneymaker-account
-          image: cloud.canister.io:5000/jaymond87/moneymaker-account-service:latest
+          image: trance0302/moneymaker-account-service:latest
           resources:
             requests:
               memory: "512Mi"
@@ -376,7 +376,7 @@ spec:
     spec:
       containers:
         - name: moneymaker-budget
-          image: cloud.canister.io:5000/jaymond87/moneymaker-budget-service:latest
+          image: trance0302/moneymaker-budget-service:latest
           resources:
             requests:
               memory: "512Mi"

@@ -8,7 +8,7 @@ kubectl apply -f namespace.yml
 
 kubectl apply -f cert.yml
 
-kubectl apply -f ../../secrets/canister-registry-secret.yml -n jd-mm
+kubectl apply -f ../../secrets/dockerhub-registry-secret.yml -n jd-mm
 
 kubectl apply -f ../../secrets/moneymaker-app-secrets.yml -n jd-mm
 

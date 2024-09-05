@@ -10,7 +10,7 @@ kubectl apply -f namespace.yml
 
 kubectl apply -f cert.yml
 
-kubectl apply -f ../../secrets/canister-registry-secret.yml -n $namespace
+kubectl apply -f ../../secrets/dockerhub-registry-secret.yml -n $namespace
 
 kubectl apply -f ../../secrets/media-library-secrets.yml -n $namespace
 
