@@ -442,7 +442,7 @@ metadata:
   namespace: jd-mm
 subsets:
   - addresses:
-        - ip: 192.168.50.21
+        - ip: 192.168.40.21
     ports:
       - port: 3306
 
@@ -468,7 +468,7 @@ metadata:
   namespace: jd-mm
 subsets:
   - addresses:
-        - ip: 192.168.50.21
+        - ip: 192.168.40.21
     ports:
       - port: 5674
 
@@ -494,6 +494,6 @@ metadata:
   namespace: jd-mm
 subsets:
   - addresses:
-        - ip: 192.168.50.21
+        - ip: 192.168.40.21
     ports:
       - port: 15674
