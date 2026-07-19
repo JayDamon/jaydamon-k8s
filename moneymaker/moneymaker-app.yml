@@ -233,6 +233,8 @@ spec:
           env:
           - name: JAVA_TOOL_OPTIONS
             value: "-XX:-UseContainerSupport"
+          - name: SPRING_CLOUD_KUBERNETES_ENABLED
+            value: "true"
           - name: SPRING_PROFILES_ACTIVE
             valueFrom:
                 configMapKeyRef:
@@ -321,6 +323,8 @@ spec:
           env:
           - name: JAVA_TOOL_OPTIONS
             value: "-XX:-UseContainerSupport"
+          - name: SPRING_CLOUD_KUBERNETES_ENABLED
+            value: "true"
           - name: SPRING_PROFILES_ACTIVE
             valueFrom:
                 configMapKeyRef:
@@ -409,6 +413,8 @@ spec:
           env:
           - name: JAVA_TOOL_OPTIONS
             value: "-XX:-UseContainerSupport"
+          - name: SPRING_CLOUD_KUBERNETES_ENABLED
+            value: "true"
           - name: SPRING_PROFILES_ACTIVE
             valueFrom:
                 configMapKeyRef:

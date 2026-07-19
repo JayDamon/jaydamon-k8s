@@ -5,7 +5,7 @@ metadata:
   namespace: jd-mm
 rules:
   - apiGroups: [""]
-    resources: ["configmaps", "secrets", "services", "endpoints", "pods"]
+    resources: ["configmaps"]
     verbs: ["get", "list", "watch"]
 ---
 apiVersion: rbac.authorization.k8s.io/v1
