@@ -2,13 +2,11 @@
 
 res="${1:-0}";
 
-kubectl delete -f ingress.yml
+kubectl delete -f httproute.yml
 
 kubectl delete -f app.yml
 
-kubectl delete -f certificate.yml
-
-kubectl delete -f ../../secrets/canister-registry-secret.yml -n jaydamon
+kubectl delete -f ../../secrets/dockerhub-registry-secret.yml -n jaydamon
 
 kubectl delete -f namespace.yml
 

@@ -29,6 +29,8 @@ spec:
       labels:
         app: media-library-client
     spec:
+      nodeSelector:
+        kubernetes.io/arch: amd64
       containers:
       - name: media-library-client
         image: trance0302/media-library-client:0.1.9
@@ -77,12 +79,16 @@ spec:
       labels:
         app: media-library-storage-service
     spec:
+      nodeSelector:
+        kubernetes.io/arch: amd64
       containers:
         - name: media-library-storage-service
           image: trance0302/media-library-storage-service:0.1.32
           ports:
           - containerPort: 8080
           env:
+          - name: JAVA_TOOL_OPTIONS
+            value: "-XX:-UseContainerSupport"
           - name: SPRING_PROFILES_ACTIVE
             valueFrom:
                 configMapKeyRef:
@@ -121,7 +127,7 @@ metadata:
   name: mysql-service
 subsets:
   - addresses:
-        - ip: 192.168.40.21
+        - ip: 192.168.40.61
     ports:
       - port: 3306
 

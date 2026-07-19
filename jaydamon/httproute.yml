@@ -1,0 +1,33 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: jaydamon
+  namespace: jaydamon
+spec:
+  parentRefs:
+    - name: factotum-gateway
+      namespace: traefik
+      sectionName: jaydamon-com-https
+  hostnames:
+    - "jaydamon.com"
+  rules:
+    - backendRefs:
+        - name: jaydamon-service
+          port: 80
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: www-jaydamon
+  namespace: jaydamon
+spec:
+  parentRefs:
+    - name: factotum-gateway
+      namespace: traefik
+      sectionName: jaydamon-wildcard-https
+  hostnames:
+    - "www.jaydamon.com"
+  rules:
+    - backendRefs:
+        - name: jaydamon-service
+          port: 80

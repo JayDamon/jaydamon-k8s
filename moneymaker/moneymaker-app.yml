@@ -32,8 +32,10 @@ spec:
       labels:
         app: moneymaker
     spec:
+      nodeSelector:
+        kubernetes.io/arch: amd64
       containers:
-      - name: moneymaker 
+      - name: moneymaker
         image: trance0302/moneymaker-client:1.23
         resources:
           requests:
@@ -90,6 +92,8 @@ spec:
       labels:
         app: moneymaker-gateway
     spec:
+      nodeSelector:
+        kubernetes.io/arch: amd64
       containers:
         - name: moneymaker-gateway
           image: trance0302/moneymaker-api-gateway:1.7
@@ -103,6 +107,8 @@ spec:
           ports:
           - containerPort: 8080
           env:
+          - name: JAVA_TOOL_OPTIONS
+            value: "-XX:-UseContainerSupport"
           - name: SPRING_PROFILES_ACTIVE
             valueFrom:
                 configMapKeyRef:
@@ -147,6 +153,8 @@ spec:
       labels:
         app: moneymaker-admin
     spec:
+      nodeSelector:
+        kubernetes.io/arch: amd64
       containers:
         - name: moneymaker-admin
           image: trance0302/moneymaker-admin-service:1.7
@@ -160,6 +168,8 @@ spec:
           ports:
           - containerPort: 8080
           env:
+          - name: JAVA_TOOL_OPTIONS
+            value: "-XX:-UseContainerSupport"
           - name: SPRING_PROFILES_ACTIVE
             valueFrom:
                 configMapKeyRef:
@@ -206,6 +216,8 @@ spec:
       labels:
         app: moneymaker-transaction
     spec:
+      nodeSelector:
+        kubernetes.io/arch: amd64
       containers:
         - name: moneymaker-transaction
           image: trance0302/moneymaker-transaction-service:1.13
@@ -219,6 +231,8 @@ spec:
           ports:
           - containerPort: 8080
           env:
+          - name: JAVA_TOOL_OPTIONS
+            value: "-XX:-UseContainerSupport"
           - name: SPRING_PROFILES_ACTIVE
             valueFrom:
                 configMapKeyRef:
@@ -290,6 +304,8 @@ spec:
       labels:
         app: moneymaker-account
     spec:
+      nodeSelector:
+        kubernetes.io/arch: amd64
       containers:
         - name: moneymaker-account
           image: trance0302/moneymaker-account-service:2.5
@@ -303,6 +319,8 @@ spec:
           ports:
           - containerPort: 8080
           env:
+          - name: JAVA_TOOL_OPTIONS
+            value: "-XX:-UseContainerSupport"
           - name: SPRING_PROFILES_ACTIVE
             valueFrom:
                 configMapKeyRef:
@@ -374,6 +392,8 @@ spec:
       labels:
         app: moneymaker-budget
     spec:
+      nodeSelector:
+        kubernetes.io/arch: amd64
       containers:
         - name: moneymaker-budget
           image: trance0302/moneymaker-budget-service:1.7
@@ -387,6 +407,8 @@ spec:
           ports:
           - containerPort: 8080
           env:
+          - name: JAVA_TOOL_OPTIONS
+            value: "-XX:-UseContainerSupport"
           - name: SPRING_PROFILES_ACTIVE
             valueFrom:
                 configMapKeyRef:
@@ -442,7 +464,7 @@ metadata:
   namespace: jd-mm
 subsets:
   - addresses:
-        - ip: 192.168.40.21
+        - ip: 192.168.40.61
     ports:
       - port: 3306
 
@@ -468,7 +490,7 @@ metadata:
   namespace: jd-mm
 subsets:
   - addresses:
-        - ip: 192.168.40.21
+        - ip: 192.168.40.61
     ports:
       - port: 5674
 
@@ -494,6 +516,6 @@ metadata:
   namespace: jd-mm
 subsets:
   - addresses:
-        - ip: 192.168.40.21
+        - ip: 192.168.40.61
     ports:
       - port: 15674

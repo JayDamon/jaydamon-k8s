@@ -31,9 +31,11 @@ spec:
       labels:
         app: jaydamon
     spec:
+      nodeSelector:
+        kubernetes.io/arch: amd64
       containers:
-      - name: media-catalog
-        image: trance0302/jaydamon:latest
+      - name: jay-damon
+        image: trance0302/jaydamon:1.8
         ports:
         - containerPort: 80
       imagePullSecrets:

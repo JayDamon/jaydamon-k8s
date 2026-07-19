@@ -1,0 +1,33 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: media-library
+  namespace: media-jd
+spec:
+  parentRefs:
+    - name: factotum-gateway
+      namespace: traefik
+      sectionName: jaydamon-wildcard-https
+  hostnames:
+    - "media-library.jaydamon.com"
+  rules:
+    - backendRefs:
+        - name: media-library-client-service
+          port: 80
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: media-library-api
+  namespace: media-jd
+spec:
+  parentRefs:
+    - name: factotum-gateway
+      namespace: traefik
+      sectionName: jaydamon-wildcard-https
+  hostnames:
+    - "media-library-api.jaydamon.com"
+  rules:
+    - backendRefs:
+        - name: media-library-storage-service
+          port: 8080
