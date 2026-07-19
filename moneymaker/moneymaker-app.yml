@@ -221,6 +221,7 @@ spec:
       containers:
         - name: moneymaker-transaction
           image: trance0302/moneymaker-transaction-service:1.13
+          imagePullPolicy: Always
           resources:
             requests:
               memory: "512Mi"
@@ -233,8 +234,6 @@ spec:
           env:
           - name: JAVA_TOOL_OPTIONS
             value: "-XX:-UseContainerSupport"
-          - name: SPRING_CLOUD_KUBERNETES_ENABLED
-            value: "true"
           - name: SPRING_PROFILES_ACTIVE
             valueFrom:
                 configMapKeyRef:
@@ -311,6 +310,7 @@ spec:
       containers:
         - name: moneymaker-account
           image: trance0302/moneymaker-account-service:2.5
+          imagePullPolicy: Always
           resources:
             requests:
               memory: "512Mi"
@@ -323,8 +323,6 @@ spec:
           env:
           - name: JAVA_TOOL_OPTIONS
             value: "-XX:-UseContainerSupport"
-          - name: SPRING_CLOUD_KUBERNETES_ENABLED
-            value: "true"
           - name: SPRING_PROFILES_ACTIVE
             valueFrom:
                 configMapKeyRef:
@@ -401,6 +399,7 @@ spec:
       containers:
         - name: moneymaker-budget
           image: trance0302/moneymaker-budget-service:1.7
+          imagePullPolicy: Always
           resources:
             requests:
               memory: "512Mi"
@@ -413,8 +412,6 @@ spec:
           env:
           - name: JAVA_TOOL_OPTIONS
             value: "-XX:-UseContainerSupport"
-          - name: SPRING_CLOUD_KUBERNETES_ENABLED
-            value: "true"
           - name: SPRING_PROFILES_ACTIVE
             valueFrom:
                 configMapKeyRef:
