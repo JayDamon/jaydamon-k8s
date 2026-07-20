@@ -97,6 +97,7 @@ spec:
       containers:
         - name: moneymaker-gateway
           image: trance0302/moneymaker-api-gateway:1.7
+          imagePullPolicy: Always
           resources:
             requests:
               memory: "512Mi"
@@ -158,6 +159,7 @@ spec:
       containers:
         - name: moneymaker-admin
           image: trance0302/moneymaker-admin-service:1.7
+          imagePullPolicy: Always
           resources:
             requests:
               memory: "512Mi"
