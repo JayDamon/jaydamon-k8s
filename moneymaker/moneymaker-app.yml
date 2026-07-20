@@ -160,10 +160,10 @@ spec:
           imagePullPolicy: Always
           resources:
             requests:
-              memory: "512Mi"
+              memory: "1Gi"
               cpu: "500m"
             limits:
-              memory: "512Mi"
+              memory: "1Gi"
               cpu: "500m"
           ports:
           - containerPort: 8080
@@ -222,10 +222,10 @@ spec:
           imagePullPolicy: Always
           resources:
             requests:
-              memory: "512Mi"
+              memory: "1Gi"
               cpu: "500m"
             limits:
-              memory: "512Mi"
+              memory: "1Gi"
               cpu: "500m"
           ports:
           - containerPort: 8080
@@ -309,10 +309,10 @@ spec:
           imagePullPolicy: Always
           resources:
             requests:
-              memory: "512Mi"
+              memory: "1Gi"
               cpu: "500m"
             limits:
-              memory: "512Mi"
+              memory: "1Gi"
               cpu: "500m"
           ports:
           - containerPort: 8080
@@ -396,10 +396,10 @@ spec:
           imagePullPolicy: Always
           resources:
             requests:
-              memory: "512Mi"
+              memory: "1Gi"
               cpu: "500m"
             limits:
-              memory: "512Mi"
+              memory: "1Gi"
               cpu: "500m"
           ports:
           - containerPort: 8080
