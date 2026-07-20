@@ -108,8 +108,6 @@ spec:
           ports:
           - containerPort: 8080
           env:
-          - name: JAVA_TOOL_OPTIONS
-            value: "-XX:-UseContainerSupport"
           - name: SPRING_PROFILES_ACTIVE
             valueFrom:
                 configMapKeyRef:
@@ -170,8 +168,6 @@ spec:
           ports:
           - containerPort: 8080
           env:
-          - name: JAVA_TOOL_OPTIONS
-            value: "-XX:-UseContainerSupport"
           - name: SPRING_PROFILES_ACTIVE
             valueFrom:
                 configMapKeyRef:
@@ -234,8 +230,6 @@ spec:
           ports:
           - containerPort: 8080
           env:
-          - name: JAVA_TOOL_OPTIONS
-            value: "-XX:-UseContainerSupport"
           - name: SPRING_PROFILES_ACTIVE
             valueFrom:
                 configMapKeyRef:
@@ -323,8 +317,6 @@ spec:
           ports:
           - containerPort: 8080
           env:
-          - name: JAVA_TOOL_OPTIONS
-            value: "-XX:-UseContainerSupport"
           - name: SPRING_PROFILES_ACTIVE
             valueFrom:
                 configMapKeyRef:
@@ -412,8 +404,6 @@ spec:
           ports:
           - containerPort: 8080
           env:
-          - name: JAVA_TOOL_OPTIONS
-            value: "-XX:-UseContainerSupport"
           - name: SPRING_PROFILES_ACTIVE
             valueFrom:
                 configMapKeyRef:
